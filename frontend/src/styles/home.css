@@ -1,0 +1,327 @@
+:root {
+  --bg-dark-core: #07070a;
+  --bg-surface-elevated: rgba(18, 18, 29, 0.45);
+  --border-accent: rgba(255, 255, 255, 0.06);
+  --border-accent-hover: rgba(255, 152, 57, 0.3);
+
+  --brand-primary: #ff9839;
+  --brand-gradient: linear-gradient(135deg, #ff9839 0%, #ff5216 100%);
+
+  --text-pure: #ffffff;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --ease-elastic: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+  background-color: var(--bg-dark-core);
+  margin: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: var(--text-primary);
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px min(6%, 80px);
+  background: rgba(7, 7, 10, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-accent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navBar h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(
+    135deg,
+    var(--text-pure) 30%,
+    var(--text-secondary) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.navBar > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navBar p {
+  margin: 0 16px 0 2px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+.navBar button {
+  text-transform: none !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  padding: 7px 18px !important;
+  border-radius: 100px !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  transition: all 0.3s var(--ease-elastic) !important;
+}
+
+.navBar button:hover {
+  background-color: var(--text-pure) !important;
+  color: var(--bg-dark-core) !important;
+  border-color: var(--text-pure) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.08);
+}
+
+.navBar svg {
+  color: var(--text-secondary);
+  font-size: 1.35rem !important;
+  transition:
+    color 0.25s ease,
+    transform 0.25s var(--ease-elastic);
+}
+
+.navBar button:has(svg):hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.navBar button:has(svg):hover svg {
+  color: var(--brand-primary);
+  transform: rotate(-12deg) scale(1.05);
+}
+
+.meetContainer {
+  min-height: calc(100vh - 73px);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  padding: 40px min(8%, 120px);
+  gap: clamp(40px, 6vw, 100px);
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: dashboardFadeUp 0.8s var(--ease-elastic) forwards;
+}
+
+.leftPanel h2 {
+  font-size: clamp(1.8rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: var(--text-pure);
+  margin: 0 0 36px 0;
+  background: linear-gradient(
+    135deg,
+    var(--text-pure) 40%,
+    var(--text-secondary) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.leftPanel > div > div {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-accent);
+  padding: 32px;
+  border-radius: 20px;
+  max-width: 500px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.leftPanel > div > div:hover {
+  border-color: var(--border-accent-hover);
+  box-shadow: 0 24px 60px rgba(255, 152, 57, 0.04);
+}
+
+.leftPanel input {
+  color: var(--text-pure) !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+}
+
+.leftPanel label {
+  color: var(--text-secondary) !important;
+  font-size: 0.95rem !important;
+}
+
+.leftPanel fieldset {
+  border-radius: 14px !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  transition:
+    border-color 0.25s ease,
+    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.leftPanel div:hover fieldset {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.leftPanel :global(.Mui-focused) fieldset {
+  border-color: var(--brand-primary) !important;
+  border-width: 1.5px !important;
+}
+
+.leftPanel :global(.Mui-focused) label {
+  color: var(--brand-primary) !important;
+  font-weight: 500 !important;
+}
+
+.leftPanel button {
+  background: var(--brand-gradient) !important;
+  text-transform: none !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  padding: 0 36px !important;
+  border-radius: 14px !important;
+  color: var(--text-pure) !important;
+  box-shadow: 0 8px 24px rgba(255, 152, 57, 0.2) !important;
+  transition: all 0.3s var(--ease-elastic) !important;
+}
+
+.leftPanel button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(255, 152, 57, 0.35) !important;
+  filter: brightness(1.08);
+}
+
+.leftPanel button:active {
+  transform: translateY(-1px);
+}
+
+.rightPanel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  animation: dashboardFadeInRight 1s var(--ease-elastic) forwards;
+}
+
+.rightPanel img {
+  max-width: 85%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.5));
+  animation: dashboardFloat 6s ease-in-out infinite;
+}
+
+.rightPanel::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 152, 57, 0.14) 0%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes dashboardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dashboardFadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes dashboardFloat {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-16px) scale(1.01);
+  }
+}
+
+@media (max-width: 1024px) {
+  .meetContainer {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 50px 6% 100px 6%;
+    gap: 60px;
+  }
+
+  .leftPanel {
+    align-items: center;
+  }
+
+  .leftPanel > div > div {
+    max-width: 100%;
+    width: min(480px, 100%);
+    margin: 0 auto;
+  }
+
+  .rightPanel img {
+    max-width: 55%;
+  }
+}
+
+@media (max-width: 640px) {
+  .navBar p {
+    display: none;
+  }
+
+  .leftPanel > div > div {
+    padding: 24px 20px;
+  }
+
+  .leftPanel > div > div > div {
+    flex-direction: column !important;
+    width: 100%;
+    gap: 14px !important;
+  }
+
+  .leftPanel button {
+    padding: 14px 0 !important;
+    width: 100%;
+  }
+}
+
+.restore {
+  color: white;
+}
