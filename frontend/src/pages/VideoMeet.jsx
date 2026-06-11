@@ -22,19 +22,19 @@ import MicOffIcon from "@mui/icons-material/MicOff";
 import ScreenShareIcon from "@mui/icons-material/ScreenShare";
 import StopScreenShareIcon from "@mui/icons-material/StopScreenShare";
 import ChatIcon from "@mui/icons-material/Chat";
+import server from "../environment";
 
-// Global WebRTC State connections storage
 var connections = {};
 
 const peerConfigConnections = {
   iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
 };
 
-// Premium Technical Dark Theme Configuration Matching Auth Interface
+
 const conferenceTheme = createTheme({
   palette: {
     mode: "dark",
-    primary: { main: "#ff9839" }, // Brand Orange Accent
+    primary: { main: "#ff9839" }, 
     background: { default: "#07070a", paper: "#111116" },
     error: { main: "#ff5252" },
   },
@@ -316,7 +316,7 @@ export default function VideoMeetComponent() {
     }
   };
 
-  const server_url = "http://localhost:3000/";
+  const server_url = server;
   let connectToSocketServer = () => {
     socketRef.current = io.connect(server_url, { secure: false });
     socketRef.current.on("signal", gotMessageFromServer);
